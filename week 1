@@ -6,7 +6,40 @@
 - _Poin-poin Utama_
 Database vs Database management system
 Database(db): koleksi data-datanya yang terstrukstur
+Database Management System: sebagai interface antara actual Data Base dan pengguna ataupun aplikasi program, misalkan data berhubungan dengan produk, customers, transaction dan employees.
+- Componen dari DBMS:
+* collection of interrelated data
+* set of programs to access the data (program apa yang digunakan untuk mengakses data tersebut)
+* conventent and efficient environment ( lingkungannya yang cocok misalkan)
 
+- Modern DB systems:
+* Handle structured and unstructured data ( mampu menghandel data" terstruktur)
+* Touch almost every aspect of our lives (sampai" ada istilah data adalah nyawa yang baru, zaman sekarang menghasilkan data kayak dunia baru)
+
+- DB APPLICATION EXAMPLES
+* Enterprise information
+* sales: customers, products purchases
+* Accounting: payments, receipts, assets
+* Human Resources: Information about employees, salaries, payroll taxes
+* Manifacturing management of production, iventory, orders, supply chain .
+* Banking and finance
+* Customer information, accounts, loans, and banking transactions.
+* Credit card transactions
+* Finance: sales and purchases of financial instruments (e.g, stocks and bonds; storing real-time market data)
+* Universities: registration, grades
+
+Sebelum ada modern DBMS yang kita lihat pendekatannya langsung direct jadi siapapun bisa langsung bisa akses data tersebut. 
+Hal-hal tantangan yang dihadapi:
+1. Data redudancy: data yang sama tetapi diubah jadi data ini mungkin bisa terjadi ketika tidak memiliki dbms yang tidak bagus (misalkan customer detail menongol dalam data yang berbeda).
+2. Inconsistency: duplicated data could become inconsistent if one copu was updated and the other wasn't, resulting in discrepancles across files.
+3. Difficulty in Accessing Data: Lacking standardized query tools
+4. Need for new program
+5. Data isolation
+6. Integrity problems
+7. Challenges with constaints
+8. Atomicity of updates :harusnya kalau memang tidak terjadi kirim tidak boleh kirim tetapi sistem gagal kemudian dibalikin lagi, jadi misalkan a dan b, bagian a sudah berkurang tetapi di bagian b masih belum tersampai.
+9. Concurrent acess Issues
+10. Security problems
 
 #### 📍 View of Data
 - _Poin-poin Utama_
