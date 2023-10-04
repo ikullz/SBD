@@ -1,12 +1,13 @@
-## 📘 My Personal Notes
+## 📘 Sistem Basis Data
 
 ### 🗓️ Week 1: Introduction to Database (DB)
 
 #### 📍 Definition and Purpose of Database
-- _Poin-poin Utama_
 Database vs Database management system
 Database(db): koleksi data-datanya yang terstrukstur
-Database Management System: sebagai interface antara actual Data Base dan pengguna ataupun aplikasi program, misalkan data berhubungan dengan produk, customers, transaction dan employees.
+Database Management System (dbms): sebagai interface antara actual Data Base dan pengguna ataupun aplikasi program, misalkan data berhubungan dengan produk, customers, transaction dan employees.
+
+#### 📍 Database Management System
 - Componen dari DBMS:
 * collection of interrelated data
 * set of programs to access the data (program apa yang digunakan untuk mengakses data tersebut)
@@ -28,7 +29,7 @@ Database Management System: sebagai interface antara actual Data Base dan penggu
 * Finance: sales and purchases of financial instruments (e.g, stocks and bonds; storing real-time market data)
 * Universities: registration, grades
 
-Sebelum ada modern DBMS yang kita lihat pendekatannya langsung direct jadi siapapun bisa langsung bisa akses data tersebut. 
+- Sebelum ada modern DBMS yang kita lihat pendekatannya langsung direct jadi siapapun bisa langsung bisa akses data tersebut. 
 Hal-hal tantangan yang dihadapi:
 1. Data redudancy: data yang sama tetapi diubah jadi data ini mungkin bisa terjadi ketika tidak memiliki dbms yang tidak bagus (misalkan customer detail menongol dalam data yang berbeda).
 2. Inconsistency: duplicated data could become inconsistent if one copu was updated and the other wasn't, resulting in discrepancles across files.
@@ -42,19 +43,74 @@ Hal-hal tantangan yang dihadapi:
 10. Security problems
 
 #### 📍 View of Data
-- _Poin-poin Utama_
-- _Contoh/Use-Case_
-- _Catatan Tambahan_
+- Data models:
+a conceptual framework that determite the structure, organization and the flow of data in a system it serves as a blueprint for designing databases. (istilahnya blueprintnya)
+- Data abstraction:
+Hide the complexity, of data structreus to represent data in the database from users through several levels of data abstraction (rektor perlu tau database yang digunakan, jadi disederhanakan atau dipermudahkan)
 
-#### 📍 DB Languages, Design, Architecture, and Users and Administrator
-- _Poin-poin Utama_
-- _Contoh/Use-Case_
-- _Catatan Tambahan_
+#### 📍 Data Models is a collection of tools for decribing
+- data: the actual information that will be stored in the database
+- data relationship: hubungan data dengan mahasiswa dengan pelajarannya lewat enrollment (dijelaskna untuk data dari makna)
+- data semantic: the meaning data
+- data constraints: rules that determine the permissible values or combinations of values for certain data. misalkan usia, angka usia tidak boleh negatif. kemudian email address harus unik untuk semua records jadi sehingga memberi batasan ketika membuat sesuatu unique
 
-... (dan seterusnya untuk sub-topik lainnya di Minggu 1)
+#### 📍 VOD Data models type:
+- Relational: organizes data into tables (or relations in mathematical terms). Ex: MySQL
+- Entity Relationship: mainly for database design. 
+* Object-Based:
+- Object oriented: objects encapsulate both data and methods to manipulate the data.
+- Object-relational: combines the characteristics of both relational and object-oriented data models it allows objects, classes, and inheritance to be directly supported in database schemas and query languages
+* semi- structured: data is hierarchical but not strictly strctured. Ex: XML, JSON.
 
----
+#### 📍 VOD Abstraction:
+- Physical level: describes how a record (e.g, instructor) is stored
+- Logical level: describes data stored in database, and the relationships among the data
+Contoh:
+      type instructor = record
+              ID=string;
+              name: string;
+              dept_name: string;
+              salary: integer;
+                end;
+- View Level: appplication programs hide details of data types. Views can also hide information (such aas an employee's salary) for security purpose
 
-(_Template di atas dapat diulangi untuk minggu-minggu berikutnya dengan topik dan sub-topik yang relevan._)
+#### 📍 Data Definition Language (DDL)
+* Specification notion for defining the database schema
+Example:     create table instructor {
+                             ID                        char(5),
+                             Name                 varchar (20),
+                             dept_name      varchar(20),
+                             salary                numeric (8,2) }
+* DDL compiler generates a set of table templates stored in a data dictionary
+* Data dictionary contains metadata (i.e., data about data)
+- database schema
+- integrity constraints (Primary key (ID uniquely identifies instructors))
+- authorization (siapapun bisa mengakses apapun)
 
----
+#### 📍 Data Manipulation Language (DML)
+* Language for accessing and updating the data organized by the appropriate data model
+- DML also known as query language
+* There are basically two types of data-manipulation language
+- Procedural DML: Pengguna harus specify data apa yang dibutuhkan dan bagaimana cara mendapatkan data tersebut
+- Declarative DML: Pengguna harus menspecify data apa yang dibutuhkan tetapi tidak perlu spesifikasikan cara mendapatkan data tersebut
+* Declarative DML are usually easier to learn and use than procedural DML
+* The portion of a DML that involves information retrieval is called a query language
+
+#### 📍 Database Access From Application Program
+
+SQL, being a non-procedural query language, is designed specifically for managing and querying data in relational databases.
+Example:
+SQL Query: SELECT name FROM students WHERE grade = 'A';
+
+SQL Limitations:
+- cant take dynamic input from users
+- doesnt dictate how the results display to end users
+- doesnt handle networking tasks
+
+#### 📍 Database Applications
+Database applications are usually partitioned into two or three parts
+* Two-tier architecture the application resides at the client machine, where it invokes database system functionality at the server machine
+* Three-tier architecture the client machine acts as a front end and does not contain any direct database calls.
+- The client end communicates with an application server, usually through a forms interface
+- The application server in turn communicates with a database system to access data
+
